@@ -1,0 +1,5 @@
+.DS_Stone
+old
+*.exe
+.vs
+*.o
