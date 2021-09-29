@@ -6,7 +6,8 @@
 class Mp : public Parameter<Mp>
 {
 protected:
-
+	//オーバーライド
+	void Event_MaxIncrement(int, int); //上限値が増えた時
 public:
 	//コンストラクタ
 	Mp();

@@ -13,7 +13,5 @@ Lv::Lv()
 Lv::Lv(void* p, int _min, int _now, int _max)
 	:Parameter(p, _min, _now, _max)
 {
-	Min(_min);
-	Now(_now);
-	Max(_max);
+
 }

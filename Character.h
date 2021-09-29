@@ -2,6 +2,7 @@
 #define CHARACTER_H
 
 #include "Side.h"
+#include "Parameter.h"
 #include "Hp.h"
 #include "Mp.h"
 #include "Exp.h"
@@ -36,6 +37,10 @@ public :
 		int,int,int,	//LV
 		int,int,int		//ATK
 	);
+	//ƒQƒbƒ^[
+	char* GetName();
+
+
 
 	//UŒ‚ˆ—
 	void Atack(Character &);

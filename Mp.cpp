@@ -13,8 +13,13 @@ Mp::Mp()
 Mp::Mp(void* p, int _min, int _now, int _max)
 	:Parameter(p, _min, _now, _max)
 {
-	Min(_min);
-	Now(_now);
-	Max(_max);
+
 }
 
+//---------------------------------------------------------------------
+//オーバーライド：MP最大値増加
+//---------------------------------------------------------------------
+void Mp::Event_MaxIncrement(int now, int x)
+{
+	Now(x);
+}

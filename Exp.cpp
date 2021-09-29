@@ -1,6 +1,6 @@
 #include "Exp.h"
 #include "Character.h"
-
+#include <stdio.h>
 //---------------------------------------------------------------------
 //コンストラクタ
 //---------------------------------------------------------------------
@@ -13,20 +13,21 @@ Exp::Exp()
 Exp::Exp(void* p, int _min, int _now, int _max)
 	:Parameter(p, _min, _now, _max)
 {
-	Min(_min);
-	Now(_now);
-	Max(_max);
+
 }
 
-void Exp::Event_NowExceedMax()
+void Exp::Event_NowExceedMax(int now ,int x)
 {
 	Character* cp = (Character*)owner;
-	Now( Now() - Max() );
+
+	Now( x - Max() ); //最大値を超えた場合は最大値を減算
 
 	cp->LevelUp();
 
+	//まだレベルアップできるとき
 	if ( Now() > Max() )
 	{
-		this->Event_NowExceedMax();
+		this->Event_NowExceedMax(Max(), Now());
 	}
+	
 }

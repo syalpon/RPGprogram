@@ -1,19 +1,20 @@
 #include "Side.h"
 #include "Character.h"
 
-
 int main()
 {
+	//óEé“
 	Character Brave(
 		"Brave",
 		ALLY,
 		0,100,100,
 		0,100,100,
-		0,0,100,
-		1,1,99,
-		0,10,100
+		0,  0,100,
+		1,  1, 99,
+		0, 10,100
 	);
 
+	//É{ÉX
 	Character Boss(
 		"Boss",
 		ENEMY,
@@ -24,7 +25,11 @@ int main()
 		0,999,999
 	);
 
-	Boss.Atack(Brave);
+	//çsìÆ
+	Brave.Atack(Boss);
+	Brave.Atack(Boss);
+	Brave.Atack(Boss);
+	Brave.Atack(Boss);
 	Brave.Test();
 
 	return 0;
