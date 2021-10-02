@@ -13,14 +13,14 @@ Character::Character()
 
 Character::Character(const char* _name)
 	: hp(this, 0, 100, 100),
-	mp(this, 0, 100, 100),
-	exp(this, 0, 0, 100),
-	lv(this,1,1,99),
-	atk(this,0,10,100)
-
+	  mp(this, 0, 100, 100),
+	  exp(this, 0, 0, 100),
+	  lv(this, 1, 1, 99),
+	  atk(this, 0, 10, 100)
 {
 	strcpy(name, _name);
 	side = OTHER;
+	alive = true;
 }
 
 Character::Character(
@@ -36,10 +36,11 @@ Character::Character(
 	  mp( this, _mp_min , _mp_now , _mp_max ),
 	  exp(this, _exp_min, _exp_now, _exp_max),
 	  lv( this, _lv_min , _lv_now , _lv_max ),
-	  atk(this, _atk_min, _atk_now, _atk_max)
+	  atk(this, _atk_min, _atk_now, _atk_max)	  
 {
 	strcpy(name, _name);
 	side = _side;
+	alive = true;
 }
 
 //---------------------------------------------------------------------
@@ -49,6 +50,12 @@ char* Character::GetName()
 {
 	return name;
 }
+
+bool  Character::GetAlive()
+{
+	return alive;
+}
+
 
 //---------------------------------------------------------------------
 //ƒLƒƒƒ‰ƒNƒ^[UŒ‚ˆ—
@@ -83,6 +90,7 @@ void Character::LevelUp()
 void Character::Dead()
 {
 	printf("%s‚Í€–S‚µ‚½\n",name);
+	alive = false;
 }
 
 //---------------------------------------------------------------------
@@ -95,7 +103,7 @@ void Character::Show()
 	switch (side)
 	{
 	case ALLY:
-		printf("[w‰c]:%s\n", "Œ©•û");
+		printf("[w‰c]:%s\n", "–¡•û");
 		break;
 
 	case ENEMY:

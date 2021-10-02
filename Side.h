@@ -4,7 +4,7 @@
 //w‰c
 typedef enum Side_T
 {
-	ALLY,	//Œ©•û
+	ALLY,	//–¡•û
 	ENEMY,	//“G
 	OTHER,	//‚»‚Ì‘¼
 }Side;

@@ -23,6 +23,7 @@ private:
 	Exp  exp;				//経験値
 	Lv   lv;				//レベル
 	Atk  atk;				//攻撃力
+	bool alive;				//生存判定
 
 public :
 	//コンストラクタ
@@ -39,6 +40,7 @@ public :
 	);
 	//ゲッター
 	char* GetName();
+	bool  GetAlive();
 
 
 
