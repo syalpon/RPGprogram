@@ -4,22 +4,13 @@
 //---------------------------------------------------------------------
 //コンストラクタ
 //---------------------------------------------------------------------
-Mp::Mp()
-	:Parameter(nullptr, 0, 100, 100)
-{
-	/*not reached*/
-}
-
-Mp::Mp(void* p, int _min, int _now, int _max)
-	:Parameter(p, _min, _now, _max)
-{
-
-}
+Mp::Mp():Parameter(this, 0, 100, 100){}
+Mp::Mp(void* p, int _min, int _now, int _max):Parameter(p, _min, _now, _max){}
 
 //---------------------------------------------------------------------
-//オーバーライド：MP最大値増加
+//オーバーライド：MP最大値増加時現在値を最大値に合わす
 //---------------------------------------------------------------------
-void Mp::Event_MaxIncrement(int now, int x)
+void Mp::Event_MaxIncrease_Process(int now_value, int update_value)
 {
-	Now(x);
+	SetNow(update_value);
 }

@@ -3,7 +3,7 @@
 
 #include "Parameter.h"
 
-class Lv : public Parameter<Lv>
+class Lv : public Parameter
 {
 protected:
 

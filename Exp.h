@@ -3,11 +3,11 @@
 
 #include "Parameter.h"
 
-class Exp : public Parameter<Exp>
+class Exp : public Parameter
 {
 protected:
 	//現在値が上限値を上回った時
-	void Event_NowExceedMax(int ,int );
+	void Event_Process_NowExceedMax(int ,int );
 
 public:
 	//コンストラクタ

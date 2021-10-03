@@ -5,18 +5,17 @@
 //---------------------------------------------------------------------
 //コンストラクタ
 //---------------------------------------------------------------------
-Character::Character()
-	:Character("No Name")
+Character::Character():Character("No Name")
 {
 	/* 引数付きコンストラクタに委譲 */
 }
 
 Character::Character(const char* _name)
-	: hp(this, 0, 100, 100),
-	  mp(this, 0, 100, 100),
-	  exp(this, 0, 0, 100),
-	  lv(this, 1, 1, 99),
-	  atk(this, 0, 10, 100)
+	: hp(this , 0, 100, 100),
+	  mp(this , 0, 100, 100),
+	  exp(this, 0,   0, 100),
+	  lv(this , 1,   1,  99),
+	  atk(this, 0,  10, 100)
 {
 	strcpy(name, _name);
 	side = OTHER;
@@ -62,10 +61,10 @@ bool  Character::GetAlive()
 //---------------------------------------------------------------------
 void Character::Atack(Character &character)
 {
-	int now = character.hp.Now();
+	int now = character.hp.GetNow();
 
 	printf("%sは%sに攻撃した\n", this->name,character.name);
-	character.hp.Now( now - this->atk.Now() );
+	character.hp.SetNow( now - this->atk.GetNow() );
 }
 
 //---------------------------------------------------------------------
@@ -74,11 +73,11 @@ void Character::Atack(Character &character)
 void Character::LevelUp()
 {
 	printf("%sはレベルアップした\n", name);
-	lv.Now(lv.Now()+1);
-	exp.Max(exp.Max()+5);
-	hp.Max(hp.Max()+10);
-	mp.Max(mp.Max()+20);
-	atk.Now(atk.Now()+5);
+	lv.SetNow(lv.GetNow()+1);
+	exp.SetMax(exp.GetMax()+5);
+	hp.SetMax(hp.GetMax()+10);
+	mp.SetMax(mp.GetMax()+20);
+	atk.SetNow(atk.GetNow()+5);
 
 	//デバッグ
 	Show();
@@ -132,5 +131,5 @@ void Character::Show()
 //デバッグ
 void Character::Test()
 {
-	exp.Now(exp.Now()+350);
+	exp.SetNow(exp.GetNow()+350);
 }

@@ -3,11 +3,12 @@
 
 #include "Parameter.h"
 
-class Mp : public Parameter<Mp>
+class Mp : public Parameter
 {
 protected:
-	//オーバーライド
-	void Event_MaxIncrement(int, int); //上限値が増えた時
+	//上限値が増えた時
+	void Event_MaxIncrease_Process(int, int); 
+
 public:
 	//コンストラクタ
 	Mp();

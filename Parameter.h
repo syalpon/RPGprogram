@@ -1,7 +1,6 @@
 #ifndef PARAMETER_H
 #define PARAMETER_H
 
-template <class T>
 class Parameter
 {
 private:
@@ -13,16 +12,35 @@ private:
 protected:
     //自クラスを持つオブジェクトのポインタ
     void* owner;
-    //閾値を超えた場合のイベントハンドラ
+
+    //--- イベントハンドラ
     //第一引数は更新前の値、第二引数は更新しようとしている値を受け取る
-    virtual void Event_MaxIncrement(int ,int ); //上限値が増えた時
-    virtual void Event_MaxDecrement(int ,int ); //上限値が減った時
-    virtual void Event_NowIncrement(int ,int ); //現在値が増えた時
-    virtual void Event_NowDecrement(int ,int ); //現在値が減った時
-    virtual void Event_MinIncrement(int ,int ); //下限値が増えた時
-    virtual void Event_MinDecrement(int ,int ); //下限値が減った時
-    virtual void Event_NowExceedMax(int ,int ); //現在値が上限値を上回った時
-    virtual void Event_NowBelowMin (int ,int ); //現在値が下限値を下回った時
+    //前処理：下限値、現在値、上限値の更新イベントハンドラ
+    virtual void Event_Process_MaxIncrease (int, int);
+    virtual void Event_Process_MaxDecrease (int, int);
+    virtual void Event_Process_MaxBelowNow (int, int);
+    virtual void Event_Process_MaxBelowMin (int, int);
+    virtual void Event_Process_NowExceedMax(int, int);
+    virtual void Event_Process_NowIncrease (int, int);
+    virtual void Event_Process_NowDecrease (int, int);
+    virtual void Event_Process_NowBelowMin (int, int);
+    virtual void Event_Process_MinExceedMax(int, int);
+    virtual void Event_Process_MinExceedNow(int, int);
+    virtual void Event_Process_MinIncrease (int, int);
+    virtual void Event_Process_MinDecrease (int, int);
+    //後処理：下限値、現在値、上限値の更新イベントハンドラ
+    virtual void Event_MaxIncrease_Process (int, int);
+    virtual void Event_MaxDecrease_Process (int, int);
+    virtual void Event_MaxBelowNow_Process (int, int);
+    virtual void Event_MaxBelowMin_Process (int, int);
+    virtual void Event_NowExceedMax_Process(int, int);
+    virtual void Event_NowIncrease_Process (int, int);
+    virtual void Event_NowDecrease_Process (int, int);
+    virtual void Event_NowBelowMin_Process (int, int);
+    virtual void Event_MinExceedMax_Process(int, int);
+    virtual void Event_MinExceedNow_Process(int, int);
+    virtual void Event_MinIncrease_Process (int, int);
+    virtual void Event_MinDecrease_Process (int, int);
 
 public :
     //コンストラクタ
@@ -30,13 +48,13 @@ public :
     Parameter(void *,int ,int ,int );
 
     //ゲッター
-    virtual int Max();
-    virtual int Now();
-    virtual int Min();
+    virtual int GetMax();
+    virtual int GetNow();
+    virtual int GetMin();
     //セッター
-    virtual void Max(int);
-    virtual void Now(int);
-    virtual void Min(int);
+    virtual void SetMax(int);
+    virtual void SetNow(int);
+    virtual void SetMin(int);
 
     //表示関数
     virtual void Show();

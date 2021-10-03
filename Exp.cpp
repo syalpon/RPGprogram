@@ -4,30 +4,22 @@
 //---------------------------------------------------------------------
 //コンストラクタ
 //---------------------------------------------------------------------
-Exp::Exp()
-	:Parameter(nullptr, 0, 100, 100)
-{
-	/*not reached*/
-}
+Exp::Exp():Parameter(this, 0, 100, 100){}
+Exp::Exp(void* p, int _min, int _now, int _max):Parameter(p, _min, _now, _max){}
 
-Exp::Exp(void* p, int _min, int _now, int _max)
-	:Parameter(p, _min, _now, _max)
-{
 
-}
-
-void Exp::Event_NowExceedMax(int now ,int x)
+//---------------------------------------------------------------------
+//更新値が上限値を超えようとしている場合
+//---------------------------------------------------------------------
+void Exp::Event_Process_NowExceedMax(int now_value,int update_value)
 {
 	Character* cp = (Character*)owner;
-
-	Now( x - Max() ); //最大値を超えた場合は最大値を減算
-
+	int next_exp = update_value - GetMax();
+	printf("変更前:%d,%d\n", GetNow(), update_value);
 	cp->LevelUp();
 
-	//まだレベルアップできるとき
-	if ( Now() > Max() )
-	{
-		this->Event_NowExceedMax(Max(), Now());
-	}
-	
+	printf("変更後:%d,%d\n", GetNow(), now_value);
+	SetNow(next_exp); //最大値を超えた場合は最大値を減算
+
+	printf("LV:%d,%d\n", GetNow(), update_value);
 }
